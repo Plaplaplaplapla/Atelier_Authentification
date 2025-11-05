@@ -25,6 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
     }
+    // Vérification simple des identifiants (à améliorer avec une base de données)
+    if ($username === 'user' && $password === 'utilisateur') {
+        // Stocker les informations utilisateur dans la session
+        $_SESSION['loggedin'] = true;
+        $_SESSION['username'] = $username;
+
+        // Rediriger vers la page protégée
+        header('Location: page_user.php');
+        exit();
+    } else {
+        $error = "Nom d'utilisateur ou mot de passe incorrect.";
+    }
 }
 ?>
 
