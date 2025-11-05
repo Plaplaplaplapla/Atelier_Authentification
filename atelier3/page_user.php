@@ -8,11 +8,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     exit();
     
 }
+
+
+if (!isset($_COOKIE['authToken'])) {
+    header('Location: index.php');
+    exit();
+}
+
 if (!isset($_SESSION['nb_connexions'])) {
     $_SESSION['nb_connexions'] = 1;
 } else {
     $_SESSION['nb_connexions']++;
 }
+
 ?>
 
 <!DOCTYPE html>
