@@ -1,5 +1,10 @@
 <?php
-// Démarrer la session
+    if (!isset($_SESSION['nb_connexions'])) {
+    $_SESSION['nb_connexions'] = 1;
+} else {
+    $_SESSION['nb_connexions']++;
+}
+
 session_start();
 
 // Vérifier si l'utilisateur s'est bienconnecté
@@ -9,11 +14,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     
 }
 
-    if (!isset($_SESSION['nb_connexions'])) {
-    $_SESSION['nb_connexions'] = 1;
-} else {
-    $_SESSION['nb_connexions']++;
-}
 
 
 ?>
